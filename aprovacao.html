@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>VERIFICAÇÃO DE APROVAÇÃO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+<div class="options">
+    <a href="index.html" class="back"> VOLTAR PARA A PÁGINA ANTERIOR </a>
+    <form action="">
+        <div class="f_container">
+            <label for="nota1">Nota 1:</label>
+            <input type="number" name="nota1" id="nota1" step="0.1" min="0.0" max="10.0">	
+        </div>
+        <div class="f_container">
+            <label for="nota2">Nota 2:</label>
+            <input type="number" name="nota2" id="nota2" step="0.1" min="0.0" max="10.0">	
+        </div>
+        <div class="f_container">
+            <label for="nota3">Nota 3:</label>
+            <input type="number" name="nota3" id="nota3" step="0.1" min="0.0" max="10.0">	
+        </div>
+
+        <p class="results"></p>
+
+        <input type="submit" value="Resultados" class="calcular">
+        
+    </form>	
+    </div>
+    
+</div>
+
+<script>
+    
+    let submit = document.querySelector('.calcular');
+    let resultado = document.querySelector('.results');
+
+    submit.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let n1 = parseFloat(document.querySelector('#nota1').value);
+        let n2 = parseFloat(document.querySelector('#nota2').value);
+        let n3 = parseFloat(document.querySelector('#nota3').value);
+
+
+        let media = (n1 + n2 + n3) / 3;
+        let aprovado = (media >= 7) ? ' Você foi Aprovado' : ' Você foi Reprovado';
+
+        resultado.innerHTML = `
+        <strong>Média: </strong>${media.toFixed(2)}<br>
+        <strong>Situação: </strong>${aprovado}
+        `;
+    });
+
+</script>
+</div>
+</div>
+</body>
+</html>
